@@ -112,6 +112,7 @@ public class MainActivity extends Activity implements OnClickListener {
     double avgBETAInit2 = 0;
     double avgBETASoFar1 = 0;
     double avgBETASoFar2 = 0;
+    boolean asleep = false;
     int numSoFar = 2;
     int initCounter = 200;
     int initRefresh = 0;
@@ -254,7 +255,7 @@ public class MainActivity extends Activity implements OnClickListener {
                                     (acc_z_init > data.get(Accelerometer.LEFT_RIGHT.ordinal()) + 400))) {
                                 notice();
                             }
-                            initRefresh = 150;
+                            initRefresh = 20;
                         }
                         initRefresh --;
                     }
@@ -297,11 +298,17 @@ public class MainActivity extends Activity implements OnClickListener {
                         } else {
                             flag.setText("Ready");
                             if (initRefresh2 == 0) {
-                                if ((((data.get(Eeg.FP1.ordinal())) < avgBETAInit1 - 0.4)
-                                        || (data.get(Eeg.FP2.ordinal()) < avgBETAInit2 - 0.4))
+                                if ((((data.get(Eeg.FP1.ordinal())) < avgBETAInit1 - 0.3)
+                                        || (data.get(Eeg.FP2.ordinal()) < avgBETAInit2 - 0.3))
                                         && (initRefresh3 == 0)) {
                                     notice();
-                                    initRefresh3 = 50;
+                                    if (!asleep) {
+                                        initRefresh3 = 20;
+                                    }
+                                    else if (asleep) {
+                                        initRefresh3 = 1;
+                                    }
+                                    asleep = true;
                                 }
                                 if (initRefresh3 > 0) {
                                     initRefresh3--;
@@ -458,6 +465,7 @@ public class MainActivity extends Activity implements OnClickListener {
             avgBETASoFar2 = 0.0;
             avgBETAInit1 = 0.0;
             avgBETAInit2 = 0.0;
+            asleep = false;
             onClickInit = true;
             initClicked = true;
             initFirstClicked = true;

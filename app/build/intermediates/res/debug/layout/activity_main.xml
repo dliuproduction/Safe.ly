@@ -1,9 +1,11 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content"
-	android:layout_height="match_parent"
+	android:layout_height="wrap_content"
 	android:background="@drawable/cloud"
 	android:fillViewport="false"
-	android:id="@+id/Scroll">
+	android:id="@+id/Scroll"
+    android:clickable="false"
+    android:nestedScrollingEnabled="true">
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -58,13 +60,13 @@
 	<LinearLayout
 		android:orientation="vertical"
 		android:layout_width="match_parent"
-		android:layout_height="251dp"
+		android:layout_height="wrap_content"
 		android:layout_marginTop="10dp">
 
 		<TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:text="@string/status"
             android:typeface="monospace"
             android:id="@+id/status" />
@@ -73,21 +75,20 @@
             android:id="@+id/con_status"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:text="@string/undefined" />
 
 		<TextView
                android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:text="@string/accel"
             android:id="@+id/accel" />
 
 		<LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+            android:orientation="horizontal"
                 android:weightSum="1">
                 <TextView
                     android:id="@+id/acc_x"
@@ -136,112 +137,118 @@
 
             </LinearLayout>
 
-		<TextView
-            android:layout_width="380dp"
-            android:layout_height="30dp"
-            android:textSize="18dp"
-            android:text="avgSoFar + avgInit"
-            android:id="@+id/textView" />
+    </LinearLayout>
 
-		<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:orientation="horizontal" >
+    <TextView
+android:layout_width="380dp"
+android:layout_height="30dp"
+android:textSize="18sp"
+android:text="avgSoFar + avgInit"
+android:id="@+id/textView" />
 
-            <TextView
-                android:id="@+id/avgBETASoFar1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:text="@string/init_val" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/avgBETAInit1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:text="@string/init_val" />
-
-            <TextView
-                android:id="@+id/avgBETASoFar2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:text="@string/init_val" />
-
-            <TextView
-                android:id="@+id/avgBETAInit2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:text="@string/init_val" />
-        </LinearLayout>
-
-		<TextView
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:textSize="16sp"
-            android:text="BETA_Absolute:"
-            android:id="@+id/textView2" />
-
-		<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/bAbsolute2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:text="@string/init_val" />
-
-            <TextView
-                android:id="@+id/bAbsolute3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="16sp"
-                android:text="@string/init_val" />
-
-        </LinearLayout>
-
-		<TextView
+        <TextView
+            android:id="@+id/avgBETASoFar1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="18dp"
-            android:text="Status:"
-            android:id="@+id/textView3" />
-	</LinearLayout>
+            android:textSize="16sp"
+            android:text="@string/init_val" />
 
-	<TextView
-        android:id="@+id/flag"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="30dp"
-		android:textColor="#ffff0000" />
+        <TextView
+            android:id="@+id/avgBETAInit1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="@string/init_val" />
+
+        <TextView
+            android:id="@+id/avgBETASoFar2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="@string/init_val" />
+
+        <TextView
+            android:id="@+id/avgBETAInit2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="@string/init_val" />
+    </LinearLayout>
 
     <TextView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_weight="1"
-		android:textSize="16sp"
-		android:text="@string/version"
-		android:id="@+id/v" />
-	<TextView
-		android:id="@+id/version"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_weight="1"
-		android:textSize="16sp"
-		android:text="@string/undefined" />
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:textSize="16sp"
+android:text="BETA_Absolute:"
+android:id="@+id/textView2"
+android:paddingTop="10dp"
+android:paddingBottom="10dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/bAbsolute2"
+            android:layout_width="165dp"
+            android:layout_height="28dp"
+            android:textSize="16sp"
+            android:text="@string/init_val" />
+
+        <TextView
+            android:id="@+id/bAbsolute3"
+            android:layout_width="165dp"
+            android:layout_height="28dp"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="@string/init_val" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Status:"
+        android:id="@+id/textView3"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+android:id="@+id/flag"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="1"
+android:textSize="25sp"
+        android:textColor="#ffff0000"
+android:layout_marginTop="0dp"
+        android:typeface="monospace" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:text="@string/version"
+        android:id="@+id/v" />
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:text="@string/undefined" />
 
 </LinearLayout>
 </ScrollView><!-- From: file:/Users/tanggabriella/Downloads/Focused_Driving-master/app/src/main/res/layout/activity_main.xml -->
