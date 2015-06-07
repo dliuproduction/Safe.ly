@@ -1,7 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:background="@drawable/Cloud">
+	android:layout_height="fill_parent"
+	android:background="#ff77d9ff">
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -26,7 +26,7 @@
 			android:layout_width="384dp"
 			android:layout_height="wrap_content"
 			android:text="Connect"
-			android:id="@+id/Connect"
+			android:id="@+id/connect"
 			android:enabled="true"
 			android:clickable="true"
 			android:elegantTextHeight="false"
@@ -36,7 +36,7 @@
 			android:layout_width="384dp"
 			android:layout_height="wrap_content"
 			android:text="Refresh"
-			android:id="@+id/Refresh"
+			android:id="@+id/refresh"
 			android:enabled="true"
 			android:clickable="true"
 			android:typeface="monospace" />
@@ -61,23 +61,21 @@
 		android:textSize="18dp"
 		android:text="@string/status"
 		android:typeface="monospace"
-		android:textColor="#ffe6ffad" />
+		android:id="@+id/status" />
 
 	<TextView
 		android:id="@+id/con_status"
 		android:layout_width="match_parent"
 		android:layout_height="30dp"
 		android:textSize="18dp"
-		android:text="@string/undefined"
-		android:textColor="#ffe6ffad" />
+		android:text="@string/undefined" />
 
 	<TextView
    		android:layout_width="match_parent"
     	android:layout_height="30dp"
 		android:textSize="18dp"
     	android:text="@string/accel"
-		android:id="@+id/accel"
-		android:textColor="#ffe6ffad" />
+		android:id="@+id/accel" />
     	<LinearLayout
 	        android:layout_width="match_parent"
 	        android:layout_height="35dp"
@@ -89,23 +87,20 @@
 		        android:layout_width="63dp"
 		        android:layout_height="30dp"
 				android:textSize="18dp"
-		        android:text="@string/init_val"
-				android:textColor="#ffe6ffad" />
+		        android:text="@string/init_val" />
 
 			<TextView
 	            android:id="@+id/acc_y"
 		        android:layout_width="67dp"
 		        android:layout_height="30dp"
 				android:textSize="18dp"
-		        android:text="@string/init_val"
-				android:textColor="#ffe6ffad" />
+		        android:text="@string/init_val" />
 	        <TextView
 	            android:id="@+id/acc_z"
 		        android:layout_width="72dp"
 		        android:layout_height="30dp"
 				android:textSize="18dp"
-		        android:text="@string/init_val"
-				android:textColor="#ffe6ffad" />
+		        android:text="@string/init_val" />
 
 			<EditText
 				android:layout_width="58dp"
@@ -139,8 +134,7 @@
 		android:layout_height="30dp"
 		android:textSize="18dp"
 		android:text="avgSoFar + avgInit"
-		android:id="@+id/textView"
-		android:textColor="#ffe6ffad" />
+		android:id="@+id/textView" />
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -153,8 +147,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:textSize="16sp"
-			android:text="@string/init_val"
-			android:textColor="#ffe6ffad" />
+			android:text="@string/init_val" />
 
 		<TextView
 			android:id="@+id/avgBETAInit1"
@@ -162,8 +155,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:textSize="16sp"
-			android:text="@string/init_val"
-			android:textColor="#ffe6ffad" />
+			android:text="@string/init_val" />
 
 		<TextView
 			android:id="@+id/avgBETASoFar2"
@@ -171,8 +163,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:textSize="16sp"
-			android:text="@string/init_val"
-			android:textColor="#ffe6ffad" />
+			android:text="@string/init_val" />
 
 		<TextView
 			android:id="@+id/avgBETAInit2"
@@ -180,8 +171,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:textSize="16sp"
-			android:text="@string/init_val"
-			android:textColor="#ffe6ffad" />
+			android:text="@string/init_val" />
 	</LinearLayout>
 
 	<TextView
@@ -189,8 +179,7 @@
         android:layout_height="35dp"
         android:textSize="16sp"
         android:text="BETA_Absolute:"
-        android:id="@+id/textView2"
-		android:textColor="#ffe6ffad" />
+        android:id="@+id/textView2" />
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -203,8 +192,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:textSize="16sp"
-			android:text="@string/init_val"
-			android:textColor="#ffe6ffad" />
+			android:text="@string/init_val" />
 
 		<TextView
 			android:id="@+id/bAbsolute3"
@@ -212,8 +200,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:textSize="16sp"
-			android:text="@string/init_val"
-			android:textColor="#ffe6ffad" />
+			android:text="@string/init_val" />
 
 		<TextView
 			android:id="@+id/test1"
@@ -221,8 +208,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:textSize="16sp"
-			android:text="@string/init_val"
-			android:textColor="#ffe6ffad" />
+			android:text="@string/init_val" />
 
 		<TextView
 			android:id="@+id/test2"
@@ -230,8 +216,7 @@
 			android:layout_height="match_parent"
 			android:layout_weight="1"
 			android:textSize="16sp"
-			android:text="@string/init_val"
-			android:textColor="#ffe6ffad" />
+			android:text="@string/init_val" />
 	</LinearLayout>
 
 	<TextView
@@ -240,16 +225,14 @@
 		android:layout_weight="1"
 		android:textSize="16sp"
 		android:text="@string/version"
-		android:id="@+id/v"
-		android:textColor="#ffe6ffad" />
+		android:id="@+id/v" />
 	<TextView
 		android:id="@+id/version"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1"
 		android:textSize="16sp"
-		android:text="@string/undefined"
-		android:textColor="#ffe6ffad" />
+		android:text="@string/undefined" />
 
 </LinearLayout>
 </ScrollView>

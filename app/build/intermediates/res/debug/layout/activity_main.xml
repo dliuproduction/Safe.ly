@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_width="wrap_content"
+	android:layout_height="fill_parent"
+	android:background="#ff77d9ff">
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -11,48 +12,40 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
-		<ImageButton
-			android:layout_width="match_parent"
-			android:layout_height="382dp"
+		<Button
+			android:layout_width="384dp"
+			android:layout_height="wrap_content"
+			android:text="Initialize"
 			android:id="@+id/Init"
-			android:src="#ff66ff58"
-			android:scaleType="fitCenter"
-			android:nestedScrollingEnabled="false"
-			android:background="#FFF"
-			android:padding="15dp"
-			android:adjustViewBounds="true"
-			android:clickable="true" />
+			android:clickable="true"
+			android:enabled="true"
+			android:hint="Click to Initialize"
+			android:typeface="monospace" />
+
+		<Button
+			android:layout_width="384dp"
+			android:layout_height="wrap_content"
+			android:text="Connect"
+			android:id="@+id/connect"
+			android:enabled="true"
+			android:clickable="true"
+			android:elegantTextHeight="false"
+			android:typeface="monospace" />
+
+		<Button
+			android:layout_width="384dp"
+			android:layout_height="wrap_content"
+			android:text="Refresh"
+			android:id="@+id/refresh"
+			android:enabled="true"
+			android:clickable="true"
+			android:typeface="monospace" />
 
 		<LinearLayout
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent">
 
-			<ToggleButton
-                android:layout_width="195dp"
-                android:layout_height="195dp"
-                android:id="@+id/connect"
-                android:scaleType="fitCenter"
-                android:background="#ff3631ff"
-                android:textOff=""
-				android:textOn=""
-				android:padding="15dp"
-                android:adjustViewBounds="true"
-                android:clickable="true"
-                android:layout_gravity="right"
-				android:animateFirstView="false" />
-
-			<ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/refresh"
-                android:src="#ffff3b34"
-                android:scaleType="fitCenter"
-                android:nestedScrollingEnabled="false"
-                android:background="#FFF"
-                android:padding="15dp"
-                android:adjustViewBounds="true"
-                android:clickable="true" />
 		</LinearLayout>
 	</LinearLayout>
 
@@ -64,47 +57,49 @@
 
 	<TextView
 		android:layout_width="match_parent"
-		android:layout_height="31dp"
-		android:textSize="16sp"
-		android:text="@string/status" />
+		android:layout_height="30dp"
+		android:textSize="18dp"
+		android:text="@string/status"
+		android:typeface="monospace"
+		android:id="@+id/status" />
 
 	<TextView
 		android:id="@+id/con_status"
 		android:layout_width="match_parent"
-		android:layout_height="42dp"
-		android:textSize="16sp"
+		android:layout_height="30dp"
+		android:textSize="18dp"
 		android:text="@string/undefined" />
 
 	<TextView
    		android:layout_width="match_parent"
-    	android:layout_height="wrap_content"
-		android:textSize="16sp"
+    	android:layout_height="30dp"
+		android:textSize="18dp"
     	android:text="@string/accel"
 		android:id="@+id/accel" />
     	<LinearLayout
 	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_height="35dp"
 	        android:layout_weight="1"
 	        android:orientation="horizontal"
 			android:weightSum="1">
 	        <TextView
 	            android:id="@+id/acc_x"
 		        android:layout_width="63dp"
-		        android:layout_height="match_parent"
-				android:textSize="16sp"
+		        android:layout_height="30dp"
+				android:textSize="18dp"
 		        android:text="@string/init_val" />
 
 			<TextView
 	            android:id="@+id/acc_y"
 		        android:layout_width="67dp"
-		        android:layout_height="match_parent"
-				android:textSize="16sp"
+		        android:layout_height="30dp"
+				android:textSize="18dp"
 		        android:text="@string/init_val" />
 	        <TextView
 	            android:id="@+id/acc_z"
 		        android:layout_width="72dp"
-		        android:layout_height="match_parent"
-				android:textSize="16sp"
+		        android:layout_height="30dp"
+				android:textSize="18dp"
 		        android:text="@string/init_val" />
 
 			<EditText
@@ -135,9 +130,9 @@
 		</LinearLayout>
 
 	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:textSize="16sp"
+		android:layout_width="380dp"
+		android:layout_height="30dp"
+		android:textSize="18dp"
 		android:text="avgSoFar + avgInit"
 		android:id="@+id/textView" />
 
@@ -229,7 +224,8 @@
 		android:layout_height="match_parent"
 		android:layout_weight="1"
 		android:textSize="16sp"
-		android:text="@string/version" />
+		android:text="@string/version"
+		android:id="@+id/v" />
 	<TextView
 		android:id="@+id/version"
 		android:layout_width="match_parent"
