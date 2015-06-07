@@ -275,9 +275,12 @@ public class MainActivity extends Activity implements OnClickListener {
                         avgBETASoFar2 = (data.get(Eeg.FP2.ordinal())+
                                 avgBETASoFar2*(numSoFar-2))/numSoFar;
                         numSoFar += 2;
+                        TextView flag = (TextView) findViewById(R.id.flag);
+                        flag.setText("Not Ready");
                         if (initCounter >0){
                             avgBETAInit1 = avgBETASoFar1;
                             avgBETAInit2 = avgBETASoFar2;
+                            flag.setText("Ready");
                             initCounter--;
                         }   else{
                             if (initRefresh2 == 0){

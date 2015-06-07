@@ -9,18 +9,18 @@
         <dex dex="/Users/tanggabriella/Downloads/Focused_Driving-master/app/build/intermediates/pre-dexed/debug/classes-108542a09721ae237c68204f6069790ba249b4f6.jar" />
     </item>
     <item
-        jar="/Users/tanggabriella/Downloads/Focused_Driving-master/app/libs/libmuseandroid.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9022422865263ca7c52cee9db33e0862d51e2461">
-        <dex dex="/Users/tanggabriella/Downloads/Focused_Driving-master/app/build/intermediates/pre-dexed/debug/libmuseandroid-171497eae28e30b74c2b340507c1ae5e36e2d477.jar" />
-    </item>
-    <item
         jar="/Users/tanggabriella/Downloads/Focused_Driving-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
         <dex dex="/Users/tanggabriella/Downloads/Focused_Driving-master/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-a64d9027a45e2de0fc0108e4611c8cb9c7a885c6.jar" />
+    </item>
+    <item
+        jar="/Users/tanggabriella/Downloads/Focused_Driving-master/app/libs/libmuseandroid.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9022422865263ca7c52cee9db33e0862d51e2461">
+        <dex dex="/Users/tanggabriella/Downloads/Focused_Driving-master/app/build/intermediates/pre-dexed/debug/libmuseandroid-171497eae28e30b74c2b340507c1ae5e36e2d477.jar" />
     </item>
     <item
         jar="/Users/tanggabriella/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
