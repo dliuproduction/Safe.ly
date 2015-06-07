@@ -102,7 +102,8 @@ public class MainActivity extends Activity implements OnClickListener {
                     .setContentTitle("Focused Driving")
                     .setContentText("WAKE UP!");
     // global variables for progressbar
-    ProgressDialog progressBar;
+    public ProgressDialog progressBar;
+    public long progress = 0;
     private int progressBarStatus = 0;
     private Handler progressBarbHandler = new Handler();
     //---------------------------------------------------------------------------
@@ -395,6 +396,7 @@ public class MainActivity extends Activity implements OnClickListener {
         connectButton.setOnClickListener(this);
         Button initButton = (Button) findViewById(R.id.Init);
         initButton.setOnClickListener(this);
+        progressBar = new ProgressDialog(this);
         fileWriter = MuseFileWriterFactory.getMuseFileWriter(new File(
                 getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS),
                 "testlibmusefile.muse"));
@@ -403,7 +405,6 @@ public class MainActivity extends Activity implements OnClickListener {
         dataListener.setFileWriter(fileWriter);
     }
     public int progress(){
-        int progress = 0;
         while (progress<= 500){
             progress++;
             if (progress == 50){
@@ -463,15 +464,38 @@ public class MainActivity extends Activity implements OnClickListener {
             numSoFar = 2;
             initCounter = 200;
 //            // create and display a new ProgressBarDialog
-//            progressBar = new ProgressDialog(v.getContext());
-//            progressBar.setCancelable(true);
+////            progressBar = new ProgressDialog(v.getContext());
 //            progressBar.setMessage("Initializing ...");
 //            progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//            progressBar.setProgress(0);
-//            progressBar.setMax(100);
+//            progressBar.setIndeterminate(true);
 //            progressBar.show();
-//            progressBarStatus = 0;
 //
+//            final int totalProgressTime = 100;
+//
+//            final Thread t = new Thread(){
+//
+//                @Override
+//                public void run(){
+//
+//                    int jumpTime = 0;
+//                    while(jumpTime < totalProgressTime){
+//                        try {
+//                            sleep(200);
+//                            jumpTime += 5;
+//                            progressBar.setProgress(jumpTime);
+//                        } catch (InterruptedException e) {
+//                            // TODO Auto-generated catch block
+//                            e.printStackTrace();
+//                        }
+//
+//                    }
+//
+//                }
+//            };
+//            t.start();
+//            ---------------------------------------------------------------------------------
+//            progressBarStatus = 0;
+//            progress = 0;
 //            new Thread(new Runnable() {
 //
 //                public void run() {
