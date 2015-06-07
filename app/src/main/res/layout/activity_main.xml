@@ -1,7 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="wrap_content"
-	android:layout_height="fill_parent"
-	android:background="#ff77d9ff"
+	android:layout_height="match_parent"
+	android:background="@drawable/cloud"
 	android:fillViewport="false"
 	android:id="@+id/Scroll">
 <LinearLayout
@@ -12,7 +12,8 @@
 	<LinearLayout
 		android:orientation="vertical"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="match_parent"
+		android:layout_marginTop="50dp">
 
 		<Button
 			android:layout_width="384dp"
@@ -22,7 +23,8 @@
 			android:clickable="true"
 			android:enabled="true"
 			android:hint="Click to Initialize"
-			android:typeface="monospace" />
+			android:typeface="monospace"
+			android:layout_marginBottom="10dp" />
 
 		<Button
 			android:layout_width="384dp"
@@ -32,7 +34,8 @@
 			android:enabled="true"
 			android:clickable="true"
 			android:elegantTextHeight="false"
-			android:typeface="monospace" />
+			android:typeface="monospace"
+			android:layout_marginBottom="10dp" />
 
 		<Button
 			android:layout_width="384dp"
@@ -41,178 +44,181 @@
 			android:id="@+id/refresh"
 			android:enabled="true"
 			android:clickable="true"
-			android:typeface="monospace" />
+			android:typeface="monospace"
+			android:layout_marginBottom="10dp" />
+
+		<Spinner
+            android:id="@+id/muses_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:spinnerMode="dropdown" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="251dp"
+		android:layout_marginTop="10dp">
+
+		<TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="18dp"
+            android:text="@string/status"
+            android:typeface="monospace"
+            android:id="@+id/status" />
+
+		<TextView
+            android:id="@+id/con_status"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="18dp"
+            android:text="@string/undefined" />
+
+		<TextView
+               android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textSize="18dp"
+            android:text="@string/accel"
+            android:id="@+id/accel" />
 
 		<LinearLayout
-			android:orientation="horizontal"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/acc_x"
+                    android:layout_width="63dp"
+                    android:layout_height="30dp"
+                    android:textSize="18dp"
+                    android:text="@string/init_val" />
 
-		</LinearLayout>
+                <TextView
+                    android:id="@+id/acc_y"
+                    android:layout_width="67dp"
+                    android:layout_height="30dp"
+                    android:textSize="18dp"
+                    android:text="@string/init_val" />
+                <TextView
+                    android:id="@+id/acc_z"
+                    android:layout_width="72dp"
+                    android:layout_height="30dp"
+                    android:textSize="18dp"
+                    android:text="@string/init_val" />
+
+                <EditText
+                    android:layout_width="58dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/acc_x_init"
+                    android:text="0.0" />
+
+                <EditText
+                    android:layout_width="59dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/acc_y_init"
+                    android:text="0.0" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:ems="10"
+                    android:id="@+id/acc_z_init"
+                    android:layout_weight="1"
+                    android:text="0.0" />
+
+            </LinearLayout>
+
+		<TextView
+            android:layout_width="380dp"
+            android:layout_height="30dp"
+            android:textSize="18dp"
+            android:text="avgSoFar + avgInit"
+            android:id="@+id/textView" />
+
+		<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/avgBETASoFar1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:text="@string/init_val" />
+
+            <TextView
+                android:id="@+id/avgBETAInit1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:text="@string/init_val" />
+
+            <TextView
+                android:id="@+id/avgBETASoFar2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:text="@string/init_val" />
+
+            <TextView
+                android:id="@+id/avgBETAInit2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:text="@string/init_val" />
+        </LinearLayout>
+
+		<TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textSize="16sp"
+            android:text="BETA_Absolute:"
+            android:id="@+id/textView2" />
+
+		<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/bAbsolute2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:text="@string/init_val" />
+
+            <TextView
+                android:id="@+id/bAbsolute3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:text="@string/init_val" />
+
+        </LinearLayout>
+
+		<TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="18dp"
+            android:text="Status:"
+            android:id="@+id/textView3" />
 	</LinearLayout>
-
-	<Spinner
-		android:id="@+id/muses_spinner"
-		android:layout_width="match_parent"
-		android:layout_height="60dp"
-		android:spinnerMode="dropdown" />
-
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="30dp"
-		android:textSize="18dp"
-		android:text="@string/status"
-		android:typeface="monospace"
-		android:id="@+id/status" />
-
-	<TextView
-		android:id="@+id/con_status"
-		android:layout_width="match_parent"
-		android:layout_height="30dp"
-		android:textSize="18dp"
-		android:text="@string/undefined" />
-
-	<TextView
-   		android:layout_width="match_parent"
-    	android:layout_height="30dp"
-		android:textSize="18dp"
-    	android:text="@string/accel"
-		android:id="@+id/accel" />
-    	<LinearLayout
-	        android:layout_width="match_parent"
-	        android:layout_height="35dp"
-	        android:layout_weight="1"
-	        android:orientation="horizontal"
-			android:weightSum="1">
-	        <TextView
-	            android:id="@+id/acc_x"
-		        android:layout_width="63dp"
-		        android:layout_height="30dp"
-				android:textSize="18dp"
-		        android:text="@string/init_val" />
-
-			<TextView
-	            android:id="@+id/acc_y"
-		        android:layout_width="67dp"
-		        android:layout_height="30dp"
-				android:textSize="18dp"
-		        android:text="@string/init_val" />
-	        <TextView
-	            android:id="@+id/acc_z"
-		        android:layout_width="72dp"
-		        android:layout_height="30dp"
-				android:textSize="18dp"
-		        android:text="@string/init_val" />
-
-			<EditText
-				android:layout_width="58dp"
-				android:layout_height="wrap_content"
-				android:inputType="numberDecimal"
-				android:ems="10"
-				android:id="@+id/acc_x_init"
-				android:text="0.0" />
-
-			<EditText
-				android:layout_width="59dp"
-				android:layout_height="wrap_content"
-				android:inputType="numberDecimal"
-				android:ems="10"
-				android:id="@+id/acc_y_init"
-				android:text="0.0" />
-
-			<EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:ems="10"
-                android:id="@+id/acc_z_init"
-				android:layout_weight="1"
-				android:text="0.0" />
-
-		</LinearLayout>
-
-	<TextView
-		android:layout_width="380dp"
-		android:layout_height="30dp"
-		android:textSize="18dp"
-		android:text="avgSoFar + avgInit"
-		android:id="@+id/textView" />
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="38dp"
-		android:orientation="horizontal" >
-
-		<TextView
-			android:id="@+id/avgBETASoFar1"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
-			android:textSize="16sp"
-			android:text="@string/init_val" />
-
-		<TextView
-			android:id="@+id/avgBETAInit1"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
-			android:textSize="16sp"
-			android:text="@string/init_val" />
-
-		<TextView
-			android:id="@+id/avgBETASoFar2"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
-			android:textSize="16sp"
-			android:text="@string/init_val" />
-
-		<TextView
-			android:id="@+id/avgBETAInit2"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
-			android:textSize="16sp"
-			android:text="@string/init_val" />
-	</LinearLayout>
-
-	<TextView
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:textSize="16sp"
-        android:text="BETA_Absolute:"
-        android:id="@+id/textView2" />
-
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="38dp"
-		android:orientation="horizontal" >
-
-		<TextView
-			android:id="@+id/bAbsolute2"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
-			android:textSize="16sp"
-			android:text="@string/init_val" />
-
-		<TextView
-			android:id="@+id/bAbsolute3"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
-			android:textSize="16sp"
-			android:text="@string/init_val" />
-
-	</LinearLayout>
-
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:layout_weight="1"
-		android:textSize="18dp"
-		android:text="Status:"
-		android:id="@+id/textView3" />
 
 	<TextView
         android:id="@+id/flag"
