@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
 import java.util.*;
+
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -42,6 +44,9 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+import android.app.ProgressDialog;
+import android.os.Handler;
+
 
 import com.interaxon.libmuse.Accelerometer;
 import com.interaxon.libmuse.ConnectionState;
@@ -96,19 +101,25 @@ public class MainActivity extends Activity implements OnClickListener {
                     .setSmallIcon(R.drawable.ic_launcher)
                     .setContentTitle("Focused Driving")
                     .setContentText("WAKE UP!");
+    // global variables for progressbar
+    ProgressDialog progressBar;
+    private int progressBarStatus = 0;
+    private Handler progressBarbHandler = new Handler();
+    //---------------------------------------------------------------------------
     public double acc_x_init, acc_y_init, acc_z_init;
     double avgBETAInit1 = 0;
     double avgBETAInit2 = 0;
     double avgBETASoFar1 = 0;
     double avgBETASoFar2 = 0;
     int numSoFar = 2;
-    int initCounter = 150;
+    int initCounter = 200;
     int initRefresh = 0;
     int initRefresh2 = 0;
     int initRefresh3 = 0;
     boolean initClicked = false, initFirstClicked = false, onClickConnect = false,
-    onClickInit = false;
+            onClickInit = false;
     Timer timer = new Timer();
+
     class ConnectionListener extends MuseConnectionListener {
 
         final WeakReference<Activity> activityRef;
@@ -121,9 +132,9 @@ public class MainActivity extends Activity implements OnClickListener {
         public void receiveMuseConnectionPacket(MuseConnectionPacket p) {
             final ConnectionState current = p.getCurrentConnectionState();
             final String status = p.getPreviousConnectionState().toString() +
-                         " -> " + current;
+                    " -> " + current;
             final String full = "Muse " + p.getSource().getMacAddress() +
-                                " " + status;
+                    " " + status;
             Log.i("Muse Headband", full);
             Activity activity = activityRef.get();
             // UI thread is used here only because we need to update
@@ -142,8 +153,8 @@ public class MainActivity extends Activity implements OnClickListener {
                         if (current == ConnectionState.CONNECTED) {
                             MuseVersion museVersion = muse.getMuseVersion();
                             String version = museVersion.getFirmwareType() +
-                                 " - " + museVersion.getFirmwareVersion() +
-                                 " - " + Integer.toString(
+                                    " - " + museVersion.getFirmwareVersion() +
+                                    " - " + Integer.toString(
                                     museVersion.getProtocolVersion());
                             museVersionText.setText(version);
                         } else {
@@ -252,12 +263,12 @@ public class MainActivity extends Activity implements OnClickListener {
 //        }
 
 
-        private void updateBETAAbsolute (final ArrayList<Double> data){
+        private void updateBETAAbsolute(final ArrayList<Double> data) {
             Activity activity = activityRef.get();
             if (activity != null) {
                 activity.runOnUiThread(new Runnable() {
                     @Override
-                    public void run(){
+                    public void run() {
 //                        TextView bAbsolute1 = (TextView) findViewById(R.id.bAbsolute1);
                         TextView bAbsolute2 = (TextView) findViewById(R.id.bAbsolute2);
                         TextView bAbsolute3 = (TextView) findViewById(R.id.bAbsolute3);
@@ -270,33 +281,34 @@ public class MainActivity extends Activity implements OnClickListener {
                                 "%6.2f", data.get(Eeg.FP2.ordinal())));
 //                        bAbsolute4.setText(String.format(
 //                                "%6.2f", data.get(Eeg.TP10.ordinal())));
-                        avgBETASoFar1 = (data.get(Eeg.FP1.ordinal())+
-                                avgBETASoFar1*(numSoFar-2))/numSoFar;
-                        avgBETASoFar2 = (data.get(Eeg.FP2.ordinal())+
-                                avgBETASoFar2*(numSoFar-2))/numSoFar;
+                        avgBETASoFar1 = (data.get(Eeg.FP1.ordinal()) +
+                                avgBETASoFar1 * (numSoFar - 2)) / numSoFar;
+                        avgBETASoFar2 = (data.get(Eeg.FP2.ordinal()) +
+                                avgBETASoFar2 * (numSoFar - 2)) / numSoFar;
                         numSoFar += 2;
                         TextView flag = (TextView) findViewById(R.id.flag);
-                        if (initCounter >0){
+                        if (initCounter > 0) {
                             avgBETAInit1 = avgBETASoFar1;
                             avgBETAInit2 = avgBETASoFar2;
                             flag.setText("Not Ready");
                             initCounter--;
-                        }   else{
+
+                        } else {
                             flag.setText("Ready");
-                            if (initRefresh2 == 0){
+                            if (initRefresh2 == 0) {
                                 if ((((data.get(Eeg.FP1.ordinal())) < avgBETAInit1 - 0.4)
-                                ||(data.get(Eeg.FP2.ordinal()) < avgBETAInit2 - 0.4))
-                                        &&(initRefresh3 == 0)) {
+                                        || (data.get(Eeg.FP2.ordinal()) < avgBETAInit2 - 0.4))
+                                        && (initRefresh3 == 0)) {
                                     notice();
                                     initRefresh3 = 50;
                                 }
-                                if (initRefresh3 > 0){
-                                    initRefresh3 --;
+                                if (initRefresh3 > 0) {
+                                    initRefresh3--;
                                 }
                                 initRefresh2 = 5;
 
                             }
-                            initRefresh2 --;
+                            initRefresh2--;
                         }
                         TextView avgBETAInit1_txt = (TextView) findViewById(R.id.avgBETAInit1);
                         TextView avgBETASoFar1_txt = (TextView) findViewById(R.id.avgBETASoFar1);
@@ -354,7 +366,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 
         public void setFileWriter(MuseFileWriter fileWriter) {
-            this.fileWriter  = fileWriter;
+            this.fileWriter = fileWriter;
         }
     }
 
@@ -367,7 +379,7 @@ public class MainActivity extends Activity implements OnClickListener {
     public MainActivity() {
         // Create listeners and pass reference to activity to them
         WeakReference<Activity> weakActivity =
-                                new WeakReference<Activity>(this);
+                new WeakReference<Activity>(this);
 
         connectionListener = new ConnectionListener(weakActivity);
         dataListener = new DataListener(weakActivity);
@@ -384,12 +396,47 @@ public class MainActivity extends Activity implements OnClickListener {
         Button initButton = (Button) findViewById(R.id.Init);
         initButton.setOnClickListener(this);
         fileWriter = MuseFileWriterFactory.getMuseFileWriter(new File(
-                        getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS),
-                        "testlibmusefile.muse"));
+                getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS),
+                "testlibmusefile.muse"));
         Log.i("Muse Headband", "libmuse version=" + LibMuseVersion.SDK_VERSION);
         fileWriter.addAnnotationString(1, "MainActivity onCreate");
         dataListener.setFileWriter(fileWriter);
     }
+    public int progress(){
+        int progress = 0;
+        while (progress<= 500){
+            progress++;
+            if (progress == 50){
+                return 10;
+            }
+            else if (progress == 100){
+                return 20;
+            }
+            else if (progress == 150){
+                return 30;
+            }
+            else if (progress == 200){
+                return 40;
+            }
+            else if (progress == 250){
+                return 50;
+            }
+            else if (progress == 300){
+                return 60;
+            }
+            else if (progress == 350){
+                return 70;
+            }
+            else if (progress == 400){
+                return 80;
+            }
+            else if (progress == 450){
+                return 90;
+            }
+        }
+        return 100;
+    }
+
     @Override
     public void onClick(View v) {
         Spinner musesSpinner = (Spinner) findViewById(R.id.muses_spinner);
@@ -397,16 +444,15 @@ public class MainActivity extends Activity implements OnClickListener {
             MuseManager.refreshPairedMuses();
             List<Muse> pairedMuses = MuseManager.getPairedMuses();
             List<String> spinnerItems = new ArrayList<String>();
-            for (Muse m: pairedMuses) {
+            for (Muse m : pairedMuses) {
                 String dev_id = m.getName() + "-" + m.getMacAddress();
                 Log.i("Muse Headband", dev_id);
                 spinnerItems.add(dev_id);
             }
-            ArrayAdapter<String> adapterArray = new ArrayAdapter<String> (
+            ArrayAdapter<String> adapterArray = new ArrayAdapter<String>(
                     this, android.R.layout.simple_spinner_item, spinnerItems);
             musesSpinner.setAdapter(adapterArray);
-        }
-        else if (v.getId() == R.id.Init){
+        } else if (v.getId() == R.id.Init) {
             avgBETASoFar1 = 0.0;
             avgBETASoFar2 = 0.0;
             avgBETAInit1 = 0.0;
@@ -415,20 +461,78 @@ public class MainActivity extends Activity implements OnClickListener {
             initClicked = true;
             initFirstClicked = true;
             numSoFar = 2;
-            initCounter = 150;
+            initCounter = 200;
+//            // create and display a new ProgressBarDialog
+//            progressBar = new ProgressDialog(v.getContext());
+//            progressBar.setCancelable(true);
+//            progressBar.setMessage("Initializing ...");
+//            progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//            progressBar.setProgress(0);
+//            progressBar.setMax(100);
+//            progressBar.show();
+//            progressBarStatus = 0;
+//
+//            new Thread(new Runnable() {
+//
+//                public void run() {
+//                    while (progressBarStatus < 100) {
+//                        // process some tasks
+//                        progressBarStatus = progress();
+//
+//                        // sleep 1 second (simulating a time consuming task...)
+//
+//                        try {
+//
+//                            Thread.sleep(1000);
+//
+//                        } catch (InterruptedException e) {
+//
+//                            e.printStackTrace();
+//
+//                        }
+//
+//                        // Update the progress bar
+//
+//                        progressBarbHandler.post(new Runnable() {
+//
+//                            public void run() {
+//
+//                                progressBar.setProgress(progressBarStatus);
+//
+//                            }
+//
+//                        });
+//
+//                    }
+//
+//
+//                    // if the file is downloaded,
+//                    if (progressBarStatus >= 100) {
+//
+//                        // sleep 2 seconds, so that you can see the 100%
+//                        try {
+//                            Thread.sleep(2000);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        // and then close the progressbar dialog
+//                        progressBar.dismiss();
+//                    }
+//                }
+//            }).start();
 
-        }
-        else if (v.getId() == R.id.connect) {
+
+
+        } else if (v.getId() == R.id.connect) {
             List<Muse> pairedMuses = MuseManager.getPairedMuses();
             if (pairedMuses.size() < 1 ||
-                musesSpinner.getAdapter().getCount() < 1) {
+                    musesSpinner.getAdapter().getCount() < 1) {
                 Log.w("Muse Headband", "There is nothing to connect to");
-            }
-            else {
+            } else {
                 muse = pairedMuses.get(musesSpinner.getSelectedItemPosition());
                 ConnectionState state = muse.getConnectionState();
                 if (state == ConnectionState.CONNECTED ||
-                    state == ConnectionState.CONNECTING) {
+                        state == ConnectionState.CONNECTING) {
                     Log.w("Muse Headband", "doesn't make sense to connect second time to the same muse");
                     return;
                 }
@@ -449,6 +553,7 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         }
     }
+
     public void notice() {
         // Sets an ID for the notification
         int mNotificationId = 001;
@@ -467,20 +572,21 @@ public class MainActivity extends Activity implements OnClickListener {
             e.printStackTrace();
         }
     }
+
     private void configure_library() {
         muse.registerConnectionListener(connectionListener);
         muse.registerDataListener(dataListener,
                 MuseDataPacketType.ACCELEROMETER);
         muse.registerDataListener(dataListener,
-                                  MuseDataPacketType.EEG);
+                MuseDataPacketType.EEG);
         muse.registerDataListener(dataListener,
-                                  MuseDataPacketType.BETA_ABSOLUTE);
+                MuseDataPacketType.BETA_ABSOLUTE);
 //        muse.registerDataListener(dataListener,
 //                                  MuseDataPacketType.BETA_RELATIVE);
         muse.registerDataListener(dataListener,
-                                  MuseDataPacketType.ARTIFACTS);
+                MuseDataPacketType.ARTIFACTS);
         muse.registerDataListener(dataListener,
-                                  MuseDataPacketType.BATTERY);
+                MuseDataPacketType.BATTERY);
         //muse.registerDataListener(dataListener, MuseDataPacketType.MELLOW);
         muse.setPreset(MusePreset.PRESET_14);
         muse.enableDataTransmission(dataTransmission);
@@ -504,6 +610,7 @@ public class MainActivity extends Activity implements OnClickListener {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
 
 //// Sets an ID for the notification

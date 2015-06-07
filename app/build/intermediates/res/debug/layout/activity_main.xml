@@ -13,7 +13,7 @@
 		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_marginTop="100dp">
+		android:layout_marginTop="50dp">
 
 		<Button
 			android:layout_width="384dp"
@@ -24,7 +24,7 @@
 			android:enabled="true"
 			android:hint="Click to Initialize"
 			android:typeface="monospace"
-			android:layout_marginBottom="30dp" />
+			android:layout_marginBottom="10dp" />
 
 		<Button
 			android:layout_width="384dp"
@@ -35,7 +35,7 @@
 			android:clickable="true"
 			android:elegantTextHeight="false"
 			android:typeface="monospace"
-			android:layout_marginBottom="30dp" />
+			android:layout_marginBottom="10dp" />
 
 		<Button
 			android:layout_width="384dp"
@@ -45,7 +45,7 @@
 			android:enabled="true"
 			android:clickable="true"
 			android:typeface="monospace"
-			android:layout_marginBottom="30dp" />
+			android:layout_marginBottom="10dp" />
 
 		<Spinner
             android:id="@+id/muses_spinner"
@@ -59,7 +59,7 @@
 		android:orientation="vertical"
 		android:layout_width="match_parent"
 		android:layout_height="251dp"
-		android:layout_marginTop="100dp">
+		android:layout_marginTop="10dp">
 
 		<TextView
             android:layout_width="match_parent"
@@ -228,7 +228,12 @@
         android:textSize="30dp"
 		android:textColor="#ffff0000" />
 
-	<TextView
+    <ProgressBar
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/progressBar" />
+
+    <TextView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_weight="1"

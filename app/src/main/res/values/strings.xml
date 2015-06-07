@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Focused Driving</string>
+    <string name="app_name">Safe.ly</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">fuck you</string>
+    <string name="action_settings">Safe.ly</string>
     <string name="connect">Connect</string>
     <string name="status">Connection Status:</string>
     <string name="disconnect">Disconnect</string>

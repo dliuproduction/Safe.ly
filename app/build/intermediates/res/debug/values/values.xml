@@ -7,8 +7,8 @@
     <!-- From: file:/Users/tanggabriella/Downloads/Focused_Driving-master/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="accel">Accelerometer Data:</string>
-    <string name="action_settings">fuck you</string>
-    <string name="app_name">Focused Driving</string>
+    <string name="action_settings">Safe.ly</string>
+    <string name="app_name">Safe.ly</string>
     <string name="artifacts">Blinks, Jaw: </string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
