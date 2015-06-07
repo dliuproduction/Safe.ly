@@ -28,7 +28,7 @@ public final class R {
         public static final int acc_z=0x7f08000a;
         public static final int acc_z_init=0x7f08000d;
         public static final int accel=0x7f080007;
-        public static final int action_settings=0x7f08001b;
+        public static final int action_settings=0x7f08001a;
         public static final int avgBETAInit1=0x7f080010;
         public static final int avgBETAInit2=0x7f080012;
         public static final int avgBETASoFar1=0x7f08000f;
@@ -39,14 +39,13 @@ public final class R {
         public static final int connect=0x7f080002;
         public static final int flag=0x7f080017;
         public static final int muses_spinner=0x7f080004;
-        public static final int progressBar=0x7f080018;
         public static final int refresh=0x7f080003;
         public static final int status=0x7f080005;
         public static final int textView=0x7f08000e;
         public static final int textView2=0x7f080013;
         public static final int textView3=0x7f080016;
-        public static final int v=0x7f080019;
-        public static final int version=0x7f08001a;
+        public static final int v=0x7f080018;
+        public static final int version=0x7f080019;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;

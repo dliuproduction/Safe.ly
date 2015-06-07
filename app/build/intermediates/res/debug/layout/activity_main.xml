@@ -228,11 +228,6 @@
         android:textSize="30dp"
 		android:textColor="#ffff0000" />
 
-    <ProgressBar
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/progressBar" />
-
     <TextView
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"

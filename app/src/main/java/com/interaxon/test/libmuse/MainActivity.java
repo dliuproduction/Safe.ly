@@ -188,9 +188,9 @@ public class MainActivity extends Activity implements OnClickListener {
         @Override
         public void receiveMuseDataPacket(MuseDataPacket p) {
             switch (p.getPacketType()) {
-//                case ACCELEROMETER:
-//                    updateAccelerometer(p.getValues());
-//                    break;
+                case ACCELEROMETER:
+                    updateAccelerometer(p.getValues());
+                    break;
 //                case BETA_RELATIVE:
 //                    updateBETARelative(p.getValues());
 //                    break;
@@ -216,52 +216,52 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         }
 
-//        private void updateAccelerometer(final ArrayList<Double> data) {
-//            Activity activity = activityRef.get();
-//            if (activity != null) {
-//                activity.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        TextView acc_x = (TextView) findViewById(R.id.acc_x);
-//                        TextView acc_y = (TextView) findViewById(R.id.acc_y);
-//                        TextView acc_z = (TextView) findViewById(R.id.acc_z);
-//                        acc_x.setText(String.format(
-//                            "%6.2f", data.get(Accelerometer.FORWARD_BACKWARD.ordinal())));
-//                        acc_y.setText(String.format(
-//                            "%6.2f", data.get(Accelerometer.UP_DOWN.ordinal())));
-//                        acc_z.setText(String.format(
-//                                "%6.2f", data.get(Accelerometer.LEFT_RIGHT.ordinal())));
-//                        if (initClicked){
-//                            TextView acc_x_init_txt = (TextView) findViewById(R.id.acc_x_init);
-//                            TextView acc_y_init_txt = (TextView) findViewById(R.id.acc_y_init);
-//                            TextView acc_z_init_txt = (TextView) findViewById(R.id.acc_z_init);
-//                            acc_x_init = data.get(Accelerometer.FORWARD_BACKWARD.ordinal());
-//                            acc_y_init = data.get(Accelerometer.UP_DOWN.ordinal());
-//                            acc_z_init = data.get(Accelerometer.LEFT_RIGHT.ordinal());
-//
-//                            acc_x_init_txt.setText(String.format(
-//                                    "%6.2f",acc_x_init));
-//                            acc_y_init_txt.setText(String.format(
-//                                    "%6.2f", acc_y_init));
-//                            acc_z_init_txt.setText(String.format(
-//                                    "%6.2f", acc_z_init));
-//                            initClicked = false;
-//                        }
-//                        if (initRefresh == 0) {
-//                            if (initFirstClicked && ((acc_x_init > data.get(Accelerometer.FORWARD_BACKWARD.ordinal()) + 400) ||
-//                                    (acc_x_init < data.get(Accelerometer.FORWARD_BACKWARD.ordinal()) - 400)||
-//                            (acc_z_init < data.get(Accelerometer.LEFT_RIGHT.ordinal()) - 400 )||
-//                                    (acc_z_init > data.get(Accelerometer.LEFT_RIGHT.ordinal()) + 400))) {
-//                                notice();
-//                            }
-//                            initRefresh = 150;
-//                        }
-//                        initRefresh --;
-//                    }
-//                });
-//
-//            }
-//        }
+        private void updateAccelerometer(final ArrayList<Double> data) {
+            Activity activity = activityRef.get();
+            if (activity != null) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView acc_x = (TextView) findViewById(R.id.acc_x);
+                        TextView acc_y = (TextView) findViewById(R.id.acc_y);
+                        TextView acc_z = (TextView) findViewById(R.id.acc_z);
+                        acc_x.setText(String.format(
+                            "%6.2f", data.get(Accelerometer.FORWARD_BACKWARD.ordinal())));
+                        acc_y.setText(String.format(
+                            "%6.2f", data.get(Accelerometer.UP_DOWN.ordinal())));
+                        acc_z.setText(String.format(
+                                "%6.2f", data.get(Accelerometer.LEFT_RIGHT.ordinal())));
+                        if (initClicked){
+                            TextView acc_x_init_txt = (TextView) findViewById(R.id.acc_x_init);
+                            TextView acc_y_init_txt = (TextView) findViewById(R.id.acc_y_init);
+                            TextView acc_z_init_txt = (TextView) findViewById(R.id.acc_z_init);
+                            acc_x_init = data.get(Accelerometer.FORWARD_BACKWARD.ordinal());
+                            acc_y_init = data.get(Accelerometer.UP_DOWN.ordinal());
+                            acc_z_init = data.get(Accelerometer.LEFT_RIGHT.ordinal());
+
+                            acc_x_init_txt.setText(String.format(
+                                    "%6.2f",acc_x_init));
+                            acc_y_init_txt.setText(String.format(
+                                    "%6.2f", acc_y_init));
+                            acc_z_init_txt.setText(String.format(
+                                    "%6.2f", acc_z_init));
+                            initClicked = false;
+                        }
+                        if (initRefresh == 0) {
+                            if (initFirstClicked && ((acc_x_init > data.get(Accelerometer.FORWARD_BACKWARD.ordinal()) + 400) ||
+                                    (acc_x_init < data.get(Accelerometer.FORWARD_BACKWARD.ordinal()) - 400)||
+                            (acc_z_init < data.get(Accelerometer.LEFT_RIGHT.ordinal()) - 400 )||
+                                    (acc_z_init > data.get(Accelerometer.LEFT_RIGHT.ordinal()) + 400))) {
+                                notice();
+                            }
+                            initRefresh = 150;
+                        }
+                        initRefresh --;
+                    }
+                });
+
+            }
+        }
 
 
         private void updateBETAAbsolute(final ArrayList<Double> data) {
