@@ -102,7 +102,7 @@ public class MainActivity extends Activity implements OnClickListener {
     double avgBETASoFar1 = 0;
     double avgBETASoFar2 = 0;
     int numSoFar = 2;
-    int initCounter = 300;
+    int initCounter = 150;
     int initRefresh = 0;
     int initRefresh2 = 0;
     int initRefresh3 = 0;
@@ -374,11 +374,11 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageButton refreshButton = (ImageButton) findViewById(R.id.refresh);
+        Button refreshButton = (Button) findViewById(R.id.refresh);
         refreshButton.setOnClickListener(this);
-        ToggleButton connectButton = (ToggleButton) findViewById(R.id.connect);
+        Button connectButton = (Button) findViewById(R.id.connect);
         connectButton.setOnClickListener(this);
-        ImageButton initButton = (ImageButton) findViewById(R.id.Init);
+        Button initButton = (Button) findViewById(R.id.Init);
         initButton.setOnClickListener(this);
         fileWriter = MuseFileWriterFactory.getMuseFileWriter(new File(
                         getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS),
