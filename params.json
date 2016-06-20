@@ -1,0 +1,6 @@
+{
+  "name": "Safe.ly",
+  "tagline": "",
+  "body": "### A Driving Safety Application \r\n\r\nFocused Driving is the project of a team of 4 Engineering students to improve safety on route for lethargic drivers. \r\n\r\n### A minimalist Android Application \r\n\r\nBuilt on the widely used android platform, Focused Driving provides a simple user interface that relies on minimal processing power, and requires only Bluetooth connection. No data usage necessary. \r\n\r\n### A Innovative Use of Wearable Tech\r\n\r\nUtilizing \"MUSE the brain sensing headband\", Focused Driving analyzes brain wave signals and accelerometer data to detect eye-closing, head nodding, and gradual changes in lethargy of an individual. These types of data provide not only emergent alerts, but also predictive warnings as a prevention for tiredness related accidents. \r\n\r\n### Authors and Contributors\r\n\r\nDennis Liu \r\n\r\nDebarun Gupta\r\n\r\nNeil Lohana \r\n\r\nDaniel Pang\r\n\r\nJason Du\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
